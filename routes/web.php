@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::resource('books', BookController::class);
+// Route::resource('news',);
