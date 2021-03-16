@@ -14,7 +14,9 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+        $news = News::all();
+        return view("news.index", compact("news"))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -24,7 +26,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        //
+        return view("news.create");
     }
 
     /**
@@ -35,7 +37,20 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'title' => 'required',
+            'topic' => 'required',
+            'image' => 'image',
+            'description' => 'required',
+            'author' => 'required',
+        ]);
+
+
+        News::create($request->all());
+
+
+        return redirect()->route('news.index')
+            ->with('success', 'Notice created successfully.');
     }
 
     /**
@@ -46,7 +61,7 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
-        //
+        return view('news.show', compact('news'));
     }
 
     /**
