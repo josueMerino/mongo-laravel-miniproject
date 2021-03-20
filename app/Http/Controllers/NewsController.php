@@ -40,7 +40,7 @@ class NewsController extends Controller
         request()->validate([
             'title' => 'required',
             'topic' => 'required',
-            'image' => 'image',
+            'image' => 'nullable|image',
             'description' => 'required',
             'author' => 'required',
         ]);
@@ -72,7 +72,7 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
-        //
+        return view('news.edit', compact('news'));
     }
 
     /**
@@ -84,7 +84,18 @@ class NewsController extends Controller
      */
     public function update(Request $request, News $news)
     {
-        //
+        request()->validate([
+            'name' => 'required',
+            'detail' => 'required',
+        ]);
+
+
+        $news->update($request->all());
+
+
+        return redirect()->route('news.index')
+        ->with('success', 'Notice updated successfully');
+        
     }
 
     /**
@@ -95,6 +106,10 @@ class NewsController extends Controller
      */
     public function destroy(News $news)
     {
-        //
+        $news->delete();
+
+
+        return redirect()->route('news.index')
+            ->with('success', 'News deleted successfully');
     }
 }

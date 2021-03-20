@@ -9,7 +9,7 @@ use Jenssegers\Mongodb\Eloquent\Model as Mongo;
 class News extends Mongo
 {
     use HasFactory;
-    //protected $connection = 'mongodb';
+    protected $connection = 'mongodb';
     protected $collection = 'news';
 
 
@@ -19,6 +19,6 @@ class News extends Mongo
      * @var array
      */
     protected $fillable = [
-        'title', 'topic', 'image', 'description', 'author'
+        'title', 'subtitle' ,'topic', 'image', 'description', 'author'
     ];
 }
