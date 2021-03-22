@@ -76,8 +76,8 @@
                                 <i class="material-icons prefix">topic</i>
                                 <select name="topic" id="label">
                                     <option value="" disabled selected>Elige</option>
-                                    <option value="actualidad">Actualidad</option>
-                                    <option value="internacional">Internacional</option>
+                                    <option value="Actualidad">Actualidad</option>
+                                    <option value="Internacional">Internacional</option>
                                     <option value="Otros">Otros</option>
                                 </select>
                                 <label for="topic">Etiqueta</label>

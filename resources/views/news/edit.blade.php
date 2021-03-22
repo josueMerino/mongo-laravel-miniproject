@@ -1,56 +1,128 @@
-@extends('books.layout')
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="{{ asset('/css/news/news.css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>News</title>
+</head>
 
-@section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Edit Book</h2>
+<body>
+    <header>
+        <nav>
+            <div class="nav-wrapper purple">
+                <a href="#" class="brand-logo center">Editar Noticia</a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li><a href="{{ route('news.index') }}">Noticias</a></li>
+                </ul>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('books.index') }}"> Back</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="box">
+            @if ($errors->any())
+                <div class="row">
+                    <div class="col s12 m4">
+                        <div class="card-panel  red ">
+                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            @endif
+            <div class="box1">
+                <div class="row">
+                    <form action="{{ route('news.update', $news->id) }}" method="post">
+                        @csrf
+                        @method('PUT')
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">title</i>
+                                <input name="title" placeholder="Coloca el título de la noticia" id="title" type="text" class="validate">
+                                <label for="title">Título</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">subtitles</i>
+                                <input name="subtitle" placeholder="Coloca el subtítulo de la noticia" id="subtitle" type="text" class="validate">
+                                <label for="subtitle">Subtítulo</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <div class="file-field input-field">
+                                    <div class="btn amber">
+                                        <i class="material-icons">image</i>
+                                        <input name="image" type="file">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input name="image" class="file-path validate" id="class" type="text" placeholder="Carga la imagen de la noticia">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">topic</i>
+                                <select name="topic" id="label">
+                                    <option value="" disabled selected>Elige</option>
+                                    <option value="actualidad">Actualidad</option>
+                                    <option value="internacional">Internacional</option>
+                                    <option value="Otros">Otros</option>
+                                </select>
+                                <label for="topic">Etiqueta</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">format_shapes</i>
+                                <input name="author" placeholder="Autor" type="text" name="" id="author" class="validate" />
+                                <label for="author">Autor</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <form class="col s12">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">textsms</i>
+                                        <textarea name="description" id="description" class="materialize-textarea" data-length="120"></textarea>
+                                        <label for="description">Descripción</label>
+                                    </div>
+                                </div>
+                            </form>
+                            <center>
+                                <button class="btn waves-effect amber" type="submit">Submit
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </center>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 
+    {{-- <script src="{{asset('/resources/js/app.js')}}"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        const labelNews = document.getElementById("topic");
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+        document.addEventListener("DOMContentLoaded", function() {
+            const elems = document.querySelectorAll("select");
+            M.FormSelect.init(elems, labelNews);
+        });
 
+    </script>
+</body>
 
-    <form action="{{ route('books.update',$book->id) }}" method="POST">
-    	@csrf
-        @method('PUT')
-
-
-         <div class="row">
-		    <div class="col-xs-12 col-sm-12 col-md-12">
-		        <div class="form-group">
-		            <strong>Name:</strong>
-		            <input type="text" name="name" value="{{ $book->name }}" class="form-control" placeholder="Name">
-		        </div>
-		    </div>
-		    <div class="col-xs-12 col-sm-12 col-md-12">
-		        <div class="form-group">
-		            <strong>Detail:</strong>
-		            <textarea class="form-control" style="height:150px" name="detail" placeholder="Detail">{{ $book->detail }}</textarea>
-		        </div>
-		    </div>
-		    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-		      <button type="submit" class="btn btn-primary">Submit</button>
-		    </div>
-		</div>
-
-
-    </form>
-
-
-@endsection
+</html>

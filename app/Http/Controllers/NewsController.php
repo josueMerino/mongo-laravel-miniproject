@@ -85,8 +85,11 @@ class NewsController extends Controller
     public function update(Request $request, News $news)
     {
         request()->validate([
-            'name' => 'required',
-            'detail' => 'required',
+            'title' => 'string',
+            'topic' => 'required',
+            'image' => 'nullable|image',
+            'description' => 'required',
+            'author' => 'required',
         ]);
 
 
