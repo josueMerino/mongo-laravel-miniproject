@@ -115,4 +115,9 @@ class NewsController extends Controller
         return redirect()->route('news.index')
             ->with('success', 'News deleted successfully');
     }
+
+    public function searchNoticeByTopic(Request $request)
+    {
+        dd('Hola');
+    }
 }
