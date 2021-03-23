@@ -37,11 +37,6 @@
       @endif
       
       
-      <form action="{{ route('news.search') }}" method="GET">
-        <input type="text" name="topic" required/>
-        <button type="submit">Search</button>
-      </form>
-
       <div class="container">
         
         @foreach ($news as $notice)

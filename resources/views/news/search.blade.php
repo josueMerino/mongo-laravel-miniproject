@@ -7,11 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    @if($posts->isNotEmpty())
-    @foreach ($posts as $post)
+    @if($news->isNotEmpty())
+    @foreach ($news as $notice)
         <div class="post-list">
-            <p>{{ $post->title }}</p>
-            <img src="{{ $post->image }}">
+            <p>{{ $notice->title }}</p>
+            <img src="{{ $notice->image }}">
         </div>
     @endforeach
 @else 

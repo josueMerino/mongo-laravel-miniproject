@@ -15,8 +15,7 @@ class NewsController extends Controller
     public function index()
     {
         $news = News::all();
-        return view("news.index", compact("news"))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view("news.index", compact("news"));
     }
 
     /**
@@ -119,15 +118,13 @@ class NewsController extends Controller
     public function searchNoticeByTopic(Request $request)
     {
          // Get the search value from the request
-    $search = $request->input('search');
+        $search = $request->input('topic');
 
-    // Search in the title and body columns from the posts table
-    $news = News::query()
-        ->where('title', 'LIKE', "%{$search}%")
-        ->orWhere('body', 'LIKE', "%{$search}%")
-        ->get();
+        // Search in the title and body columns from the posts table
+        $news = News::where('topic', $search)
+            ->get();
 
-    // Return the search view with the resluts compacted
-    return view('news.search', compact('news'));
+        // Return the search view with the resluts compacted
+        return view('news.search', compact('news'));
     }
 }
