@@ -19,6 +19,7 @@
             <div class="nav-wrapper purple">
                 <a href="#" class="brand-logo center">Noticias</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
+                  <li><a class="waves-effect amber btn" href="{{ route('news.preset') }}"><i class="material-icons left">search</i>Buscar</a></li>
                   <li><a class="waves-effect amber btn" href="{{ route('news.create') }}"><i class="material-icons left">cloud</i>Crear Noticia</a></li>
                 </ul>
             </div>
