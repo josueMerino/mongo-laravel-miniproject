@@ -44,7 +44,11 @@
             <div class="col s12 m7">
               <div class="card small" style="width: 300px;">
                 <div class="card-image" >
-                  <img src="{{ url('/storage/newsImages/15.JPG') }}" alt="A"/>
+                  @if ($notice->image)
+                  <img src="{{ $notice->get_image }}" alt="A"/>
+                  @else
+                    <img src="{{ url('/storage/newsImages/15.JPG') }}" alt="A"/>
+                  @endif
                   <span class="card-title">{{$notice->title}}</span>
                 </div>
                 <div class="card-content">

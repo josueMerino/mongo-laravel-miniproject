@@ -42,7 +42,7 @@
             @endif
             <div class="box1">
                 <div class="row">
-                    <form action="{{ route('news.store') }}" method="post">
+                    <form action="{{ route('news.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="input-field col s6">
@@ -59,15 +59,8 @@
 
                         <div class="row">
                             <div class="input-field col s12">
-                                <div class="file-field input-field">
-                                    <div class="btn amber">
-                                        <i class="material-icons">image</i>
-                                        <input name="image" type="file">
-                                    </div>
-                                    <div class="file-path-wrapper">
-                                        <input name="image" class="file-path validate" id="class" type="text" placeholder="Carga la imagen de la noticia">
-                                    </div>
-                                </div>
+                                <label for="image">Image</label>
+                                <input type="file" name="image" id="image" />
                             </div>
                         </div>
 

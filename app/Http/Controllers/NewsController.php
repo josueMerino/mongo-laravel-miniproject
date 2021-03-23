@@ -44,9 +44,13 @@ class NewsController extends Controller
             'author' => 'required',
         ]);
 
-
-        News::create($request->all());
-
+        $notice = News::create($request->all());
+        
+        if($request->file('image'))
+        {
+            $notice->image = $request->file('image')->store('news', 'public');
+            $notice->save();
+        }
 
         return redirect()->route('news.index')
             ->with('success', 'Notice created successfully.');
