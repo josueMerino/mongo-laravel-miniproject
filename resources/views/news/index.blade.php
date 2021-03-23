@@ -37,20 +37,11 @@
       @endif
       
       
-      <form action="{{route('news.search')}}" method="get">
-        <div class="input-field col s6">
-          <i class="material-icons prefix">topic</i>
-          <select name="topic" id="label">
-              <option value="" disabled selected>Elige</option>
-              <option value="Actualidad">Actualidad</option>
-              <option value="Internacional">Internacional</option>
-              <option value="Otros">Otros</option>
-          </select>
-          <label for="topic">Etiqueta</label>
-      </div>
-      <input type="submit" value="Enviar">
-       
+      <form action="{{ route('news.search') }}" method="GET">
+        <input type="text" name="topic" required/>
+        <button type="submit">Search</button>
       </form>
+
       <div class="container">
         
         @foreach ($news as $notice)

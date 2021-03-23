@@ -21,4 +21,4 @@ Route::get('/', function () {
 
 Route::resource('books', BookController::class);
 Route::resource('news', NewsController::class);
-Route::get("news/search?", [NewsController::class,'searchNoticeByTopic'])->name('news.search');
+Route::get("news/search", [NewsController::class,'searchNoticeByTopic'])->name('news.search');
