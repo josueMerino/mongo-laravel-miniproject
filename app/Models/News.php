@@ -9,6 +9,7 @@ use Jenssegers\Mongodb\Eloquent\Model as Mongo;
 class News extends Mongo
 {
     use HasFactory;
+    protected $connection = 'mongodb';
     protected $collection = 'news';
 
 

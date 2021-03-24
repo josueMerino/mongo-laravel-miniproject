@@ -11,7 +11,11 @@
     @foreach ($news as $notice)
         <div class="post-list">
             <p>{{ $notice->title }}</p>
-            <img src="{{ $notice->image }}">
+            @if ($notice->image)
+                <img src="{{ $notice->get_image }}" alt="A"/>
+            @else
+                <img src="{{ url('/storage/newsImages/15.JPG') }}" alt="A"/>
+            @endif
         </div>
     @endforeach
 @else 

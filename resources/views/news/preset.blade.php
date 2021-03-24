@@ -8,7 +8,18 @@
 </head>
 <body>
     <form action="{{ route('news.search') }}" method="GET">
-        <input type="text" name="topic" required/>
+        <label for="title">
+            Título
+            <input type="text" name="title" id="title">
+        </label>
+
+        <select name="topic" id="label">
+            <option value="" disabled selected>Elige</option>
+            <option value="Actualidad">Actualidad</option>
+            <option value="Internacional">Internacional</option>
+            <option value="Otros">Otros</option>
+        </select>
+
         <input type="submit" value="Enviar">
       </form>
 </body>

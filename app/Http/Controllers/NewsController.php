@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
 {
@@ -99,6 +100,13 @@ class NewsController extends Controller
         $news->update($request->all());
 
 
+        if ($request->file('image')) 
+        {
+            Storage::disk('public')->delete($news->image);
+            $news->image = $request->file('image')->store('news', 'public');
+            $news->save();
+        }
+
         return redirect()->route('news.index')
         ->with('success', 'Notice updated successfully');
         
@@ -123,10 +131,11 @@ class NewsController extends Controller
     {
          // Get the search value from the request
         $search = $request->input('topic');
+        $searchTitle = $request->input('title');
 
-        // Search in the title and body columns from the posts table
         $news = News::where('topic', $search)
-            ->get();
+                ->orWhere('title', "%{$searchTitle}%")
+                ->get();
 
         // Return the search view with the resluts compacted
         return view('news.search', compact('news'));
