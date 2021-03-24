@@ -134,7 +134,7 @@ class NewsController extends Controller
         $searchTitle = $request->input('title');
 
         $news = News::where('topic', $search)
-                ->orWhere('title', "%{$searchTitle}%")
+                ->orWhere('title', 'LIKE',"%{$searchTitle}%")
                 ->get();
 
         // Return the search view with the resluts compacted

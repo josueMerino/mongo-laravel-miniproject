@@ -8,11 +8,8 @@
 </head>
 <body>
     <form action="{{ route('news.search') }}" method="GET">
-        <label for="title">
-            Título
-            <input type="text" name="title" id="title">
-        </label>
-
+        <span>Título</span>
+        <input type="text" name="title" id="title">
         <select name="topic" id="label">
             <option value="" disabled selected>Elige</option>
             <option value="Actualidad">Actualidad</option>

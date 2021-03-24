@@ -48,7 +48,7 @@
                   @if ($notice->image)
                   <img src="{{ $notice->get_image }}" alt="A"/>
                   @else
-                    <img src="{{ url('/storage/newsImages/15.JPG') }}" alt="A"/>
+                  
                   @endif
                   <span class="card-title">{{$notice->title}}</span>
                 </div>
@@ -78,7 +78,7 @@
     </main>
         
   
-    <footer class="page-footer">
+    {{-- <footer class="page-footer">
       <div class="container">
         <div class="row">
           <div class="col l6 s12">
@@ -102,7 +102,7 @@
         <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
         </div>
       </div>
-    </footer>
+    </footer> --}}
     
         
 </body>
