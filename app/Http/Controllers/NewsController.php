@@ -127,17 +127,20 @@ class NewsController extends Controller
             ->with('success', 'News deleted successfully');
     }
 
-    public function searchNoticeByTopic(Request $request)
+    public function searchNotice(Request $request)
     {
          // Get the search value from the request
         $search = $request->input('topic');
         $searchTitle = $request->input('title');
 
         $news = News::where('topic', $search)
-                ->orWhere('title', 'LIKE',"%{$searchTitle}%")
-                ->get();
+           ->orWhere('title', 'LIKE',"%{$searchTitle}%")
+           ->get();
 
-        // Return the search view with the resluts compacted
+        // $news = News::whereRaw([
+        //     'topic' => ['$eq' => $search],
+        // ])->get();
+
         return view('news.search', compact('news'));
     }
 }

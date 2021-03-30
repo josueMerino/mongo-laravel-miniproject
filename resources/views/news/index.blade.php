@@ -48,7 +48,7 @@
                   @if ($notice->image)
                   <img src="{{ $notice->get_image }}" alt="A"/>
                   @else
-                  
+                  <img src="https://images.unsplash.com/photo-1580656449548-a2278870021d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=709&q=80" alt="Imagen" />
                   @endif
                   <span class="card-title">{{$notice->title}}</span>
                 </div>

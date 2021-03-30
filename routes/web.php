@@ -23,7 +23,7 @@ Route::get('/news/search-menu', function () {
     return view('news.preset');
 })->name('news.preset');
 
-Route::get("news/search", [NewsController::class,'searchNoticeByTopic'])->name('news.search');
+Route::get("news/search", [NewsController::class,'searchNotice'])->name('news.search');
 Route::resource('books', BookController::class);
 Route::resource('news', NewsController::class);
 
