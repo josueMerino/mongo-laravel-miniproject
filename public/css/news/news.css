@@ -1,0 +1,34 @@
+body{
+    background-color:#36151E;
+}
+
+h1
+{
+    text-align:center;
+    color:#ffffff;
+}
+
+.box {
+    display:flex;
+    justify-content:center;
+}
+
+.box1
+{
+    width: 50%;
+    margin: 20px;
+    padding: 20px;
+    background-color:#ffffff;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.box2
+{
+    width: 50%;
+    margin: 100px;
+    align-self: center;
+}
+
+.butom {
+    text-align: center;
+}

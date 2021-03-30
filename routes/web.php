@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/news/search-menu', function () {
+    return view('news.preset');
+})->name('news.preset');
+
+Route::get("news/search", [NewsController::class,'searchNotice'])->name('news.search');
 Route::resource('books', BookController::class);
+Route::resource('news', NewsController::class);
+
+
+
