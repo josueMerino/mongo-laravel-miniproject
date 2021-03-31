@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="{{ asset('/css/news/index.css') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="shortcut icon" href="{{url('/storage/iconos/world.ico')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{url('https://www.flaticon.com/svg/vstatic/svg/2965/2965879.svg?token=exp=1617185093~hmac=1ff55eaeed60e559759dcbe24f523352')}}" type="image/x-icon">
     <title>News</title>
 </head>
 <body>
